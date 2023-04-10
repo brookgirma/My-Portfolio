@@ -1,0 +1,718 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+:root{
+    --bg-black-900:#f2f2f2;
+    --bg-black-100:#fdf9ff;
+    --bg-black-50:#e8dfec;
+    --text-black-900:#302e4d;
+    --text-black-700:#504e70;
+}
+body.dark{
+    
+    --bg-black-900:#151515;
+    --bg-black-100:#222222;
+    --bg-black-50:#393939;
+    --text-black-900:#ffffff;
+    --text-black-700:#e9e9e9;
+    
+}
+body{
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: 'Poppins' sans-serif;
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+::before,::after{
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+}
+.section{
+    background: var(--bg-black-900);
+    min-height: 100vh;
+    display: block;
+    padding: 0 30px;
+    opacity: 1;
+    position: fixed;
+    left: 270px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+.section.back-section{
+    z-index: 1;
+}
+.section.active{
+    z-index: 2;
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+@keyframes slideSection{
+    0%
+    {
+        transform: translateX(100%);
+    }
+    100%
+    {
+        transform: translateX(0%);
+    }
+}
+.hidden{
+    display: none !important;
+}
+
+.padd-15{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.container{
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+}
+.section .container{
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+.sectiontit{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 60px;
+}
+.sectiontit h2{
+    font-size: 40px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    position: relative;
+}
+.sectiontit h2::before{
+    content: '';
+    height: 4px;
+    width: 50px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+.sectiontit h2::after{
+    content: '';
+    height: 4px;
+    width: 25px;
+    background-color: var(--skin-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+}
+.btn{
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 35px;
+    color: white;
+    border-radius: 40px;
+    display: inline-block;
+    white-space: nowrap;
+    border: none;
+    background: var(--skin-color);
+    transition: all 0.3s ease;
+}
+.btn:hover{
+    transform: scale(1.05);
+}
+.shadowdark{
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+.aside{
+    width: 270px;
+    background: var(--bg-black-100);
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 30px;
+    height: 100%;
+    border-right: 1px solid var(--bg-black-50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.aside .logo{
+    position: absolute;
+    top: 50px;
+    font-size: 30px;
+    text-transform: capitalize;
+}
+.aside .logo a{
+    color: var(--text-black-900);
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 30px;
+    letter-spacing: 5px;
+    position: relative;
+}
+.aside .logo a span{
+    font-family: 'Clicker Script' cursive;
+    font-size: 40px;
+}
+.aside .logo a::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-bottom: 5px solid var(--skin-color);
+    border-left: 5px solid var(--skin-color);
+    bottom: 0;
+    left: 0;
+}
+.aside .logo a::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-top: 5px solid var(--skin-color);
+    border-right: 5px solid var(--skin-color);
+    top: 0;
+    right: 0;
+}
+.aside .navtog{
+    height: 40px;
+    width: 45px;
+    border: 1px solid var(--bg-black-50);
+    cursor: pointer;
+    position: fixed;
+    left: 300px;
+    top: 20px;
+    border-radius: 5px;
+    background: var(--bg-black-100);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.navtog span{
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    display: inline-block;
+    position: relative;
+}
+.aside .navtog.open span{
+    background-color: transparent;
+}
+.navtog span::before{
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+.aside .navtog.open span::before{
+    transform: rotate(45deg);
+    top: 0;
+}
+.navtog span::after{
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+.aside .navtog.open span::after{
+    transform: rotate(-45deg);
+    top: 0;
+}
+.aside .nav
+{
+    margin-top: 50px;
+}
+.aside .nav li{
+    margin-bottom: 20px;
+    display: block;
+}
+.aside .nav li a{
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid var(--bg-black-50);
+    color: var(--text-black-900);
+    padding: 5px 15px;
+}
+.aside .nav li a.active{
+    color: var(--skin-color);
+}
+.aside .nav li a i{
+    margin-right: 15px;
+}
+.home{
+    min-height: 100vh;
+    display: flex;
+    color: var(--text-black-900);
+}
+.home .homeinfo{
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+h3.hello{
+    font-size: 28px;
+    margin: 15px 0;
+}
+h3.hello span{
+    font-family: 'Clicker Script' ,cursive;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--skin-color);
+}
+h3.prof{
+    font-size: 30px;
+    margin: 15px 0;
+}
+.web{
+    color: var(--skin-color);
+}
+.homeinfo p{
+    margin-bottom: 70px;
+    font-size: 20px;
+    color: var(--text-black-700);
+}
+.home .homeimg{
+    flex: 0 0 40%;
+    max-width: 40%;
+    text-align: center;
+    position: relative;
+}
+.homeimg::after{
+    content: '';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-bottom: 10px solid var(--skin-color);
+    border-right: 10px solid var(--skin-color);
+    right: 10px;
+    bottom: -40px;
+}
+.homeimg::before{
+    content: '';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-top: 10px solid var(--skin-color);
+    border-left: 10px solid var(--skin-color);
+    left: 0px;
+    top: -40px;
+}
+.home .homeimg img{
+    margin: auto;
+    border-radius: 5px;
+    height: 400px;
+}
+.absec .abcontent{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.absec .abcontent .aboutext{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.absec .abcontent .aboutext h3{
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+.absec .aboutext h3 span{
+    color: var(--skin-color);
+}
+.absec .aboutext p{
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--text-black-700);
+}
+.absec .abcontent .personalinfo{
+    flex: 0 0 60%;
+    max-width: 60%;
+    margin-top: 40px;
+}
+.personalinfo .infoitem{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.personalinfo .infoitem p{
+    font-weight: 600;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--text-black-900);
+    border-bottom: 1px solid var(--bg-black-50);
+}
+.personalinfo .infoitem p span{
+    font-weight: 400;
+    color: var(--text-black-700);
+    margin-left: 4px;
+    display: inline-block;
+}
+.personalinfo .buttons{
+    margin-top: 30px;
+}
+.personalinfo .buttons .btn{
+    margin-top: 10px;
+}
+.absec .abcontent .skill{
+    flex: 0 0 40%;
+    max-width: 40%;
+    margin-top: 40px;
+}
+.absec .skill .skillitem{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.skill .skillitem h5{
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+}
+.skill .skillitem .progress{
+    background-color: var(--bg-black-50);
+    height: 7px;
+    border-radius: 4px;
+    width: 100%;
+    position: relative;
+}
+.skillitem{
+    margin-bottom: 25px;
+}
+.skillitem .progress .progressin{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 4px;
+    background-color: var(--skin-color);
+}
+.skillitem .skillpercent{
+    position: absolute;
+    right: 0;
+    color: var(--text-black-900);
+    top: -40px;
+    font-weight: 400;
+    line-height: 40px;
+}
+.absec .education,
+.absec .experience{
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 30px;
+}
+.absec h3.title{
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+.absec .timelinebox{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.timelinebox .timeline{
+    background-color: var(--bg-black-100);
+    padding: 30px 15px;
+    border: 1px solid var(--bg-black-50);
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+}
+.timeline .timelineitem{
+    position: relative;
+    padding-left: 37px;
+    padding-bottom: 50px;
+}
+.timeline .timelineitem:last-child{
+    padding-bottom: 0;
+}
+.timeline .timelineitem::before{
+    content: '';
+    width: 1px;
+    position: absolute;
+    height: 100%;
+    left: 7px;
+    top: 0;
+    background-color: var(--skin-color);
+}
+.timeline .timelineitem .circledot{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: var(--skin-color);
+}
+.timeline .timelineitem .timelinedate{
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--text-black-700);
+}
+.timeline .timelineitem .timelinedate .fa{
+    margin-right: 5px;
+}
+.timeline .timelineitem .timelinetitle{
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    color: var(--text-black-900);
+}
+.timeline .timelineitem .timelinetext{
+    line-height: 25px;
+    font-size: 16px;
+    text-align: justify;
+    color: var(--text-black-700);
+}
+
+/*service*/
+.service .container{
+    padding-bottom: 40px;
+}
+.service .serviceitem{
+    margin-bottom: 30px;
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+}
+.serviceitem .serviceitemin{
+    background-color: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 10px;
+    padding: 30px 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.serviceitem .serviceitemin:hover{
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+.serviceitem .serviceitemin .icon{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.serviceitem .serviceitemin .icon .fa{
+    font-size: 40px;
+    line-height: 60px;
+    color: var(--skin-color);
+    transition: all 0.3s ease;
+}
+.serviceitem .serviceitemin:hover .icon{
+    background-color: var(--skin-color);
+}
+.serviceitem .serviceitemin:hover .icon .fa{
+    font-size: 25px;
+    color: #ffffff;
+}
+.serviceitem .serviceitemin h4{
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.serviceitem .serviceitemin p{
+    font-size: 16px;
+    color: var(--text-black-700);
+    line-height: 25px;
+}
+/*portfolio*/
+.portfolio .container{
+    padding-bottom: 40px;
+}
+.portfolio .portfoliohead{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+.portfolio .portfoliohead h2{
+    color: var(--text-black-900);
+    font-weight: 500;
+}
+.portfolio .portfolioitem{
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    margin-bottom: 30px;
+}
+.portfolio .portfolioitem .portfolioitemin{
+    border: 6x solid var(--bg-black-100);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.portfolioitem .portfolioitemin .portfolioimg img{
+    width: 100%;
+    display: block;
+}
+/*contact*/
+.contacttit{
+    color: var(--skin-color);
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.contactsubtit{
+    color: var(--text-black-900);
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 60px;
+}
+.contact .contactinfoitem{
+    flex: 0 0 25%;
+    max-width: 25%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.contactinfoitem .icon{
+    display: inline-block;
+}
+.contactinfoitem .icon .fa{
+    font-size: 25px;
+    color: var(--skin-color);
+}
+.contactinfoitem h4{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+    margin: 15px 0 5px;
+}
+.contactinfoitem  p{
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--text-black-700);
+    font-weight: 400;
+}
+.contact .contactform{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.contactform .col-6{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.contactform .col-12{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.contactform .formitem{
+    margin-bottom: 30px;
+}
+.contactform .formitem .formcontrol{
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    padding: 10px 25px;
+    font-size: 16px;
+    color: var(--text-black-700);
+    transition: all 0.3s ease;
+}
+.contactform .formitem .formcontrol:focus{
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+.contactform .formitem textarea.formcontrol{
+    height: 140px;
+}
+.contactform .btn{
+    height: 50px;
+    padding: 0 50px;
+}
+
+@media (max-width:1199px)
+{
+    .section .container{
+        padding-top: 70px;
+    }
+    .aside{
+        left: -270px;
+    }
+    .aside.open{
+        left: 0;
+    }
+    .aside .navtog{
+        display: flex;
+        left: 30px;
+    }
+    .aside .navtog.open{
+        left: 300px;
+    }
+    .section{
+        left: 0;
+    }
+    .section.open{
+        left: 270px;
+    }
+    .maincon{
+        padding-left: 0;
+    }
+    .abcontent .personalinfo .infoitem p span{
+        display: block;
+        margin-left: 0;
+    }
+}
+@media (max-width:991px)
+{
+    .contact .contactinfoitem,
+    .portfolio .portfolioitem,
+    .service .serviceitem{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .home .homeinfo{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .home .homeimg{
+        display: none;
+    }
+
+}
+@media (max-width:767px)
+{
+    .contact .contactform .col-6,
+    .contact .contactinfoitem,
+    .portfolio .portfolioitem,
+    .service .serviceitem,
+    .abcontent .experience,
+    .abcontent .education,
+    .abcontent .skill,
+    .abcontent .personalinfo{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
